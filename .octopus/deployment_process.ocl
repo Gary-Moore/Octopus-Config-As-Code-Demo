@@ -1,0 +1,26 @@
+step "deploy-an-azure-web-app-web-deploy" {
+    name = "Deploy an Azure Web App (Web Deploy)"
+    properties = {
+        Octopus.Action.TargetRoles = "octopus-cac-demo-web-app"
+    }
+
+    action {
+        action_type = "Octopus.AzureWebApp"
+        properties = {
+            Octopus.Action.Azure.UseChecksum = "False"
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.PackageId = "#{Package.Id}"
+            OctopusUseBundledTooling = "False"
+        }
+
+        packages {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "#{Package.Id}"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
