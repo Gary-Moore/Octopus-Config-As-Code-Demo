@@ -1,3 +1,7 @@
 variable "Package.Id" {
     value "Octopus.CacDemo.WebApp" {}
 }
+
+variable "ApiService:AccessToken" {
+    value "234234324" {}
+}
