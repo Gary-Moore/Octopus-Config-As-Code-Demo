@@ -5,3 +5,7 @@ variable "Package.Id" {
 variable "FeatureFlagOn" {
     value "true" {}
 }
+
+variable "ApplicationDb" {
+    value "DataSource=Mydb" {}
+}
